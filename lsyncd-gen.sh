@@ -29,7 +29,7 @@ sync {
 		compress = true
 	},
 	ssh = {
-		options = {["StrictHostKeyChecking"] = "no"},
+		options = {["StrictHostKeyChecking"] = "no", ["User"] = "root"},
 		identityFile = "~/.ssh/id_rsa"
 	}
 }
