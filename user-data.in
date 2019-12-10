@@ -1,0 +1,11 @@
+#cloud-config
+users:
+  - name: root
+    plain_text_passwd: 'redhat'
+    lock_passwd: False
+    ssh_authorized_keys:
+      - %SSH_KEY%
+rh_subscription:
+  username: %RHSM_USERNAME%
+  password: %RHSM_PASSWORD%
+  auto-attach: True
