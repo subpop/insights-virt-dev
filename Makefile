@@ -11,14 +11,23 @@ HOSTNAMES = \
 
 ISOS = $(addsuffix .iso,$(HOSTNAMES))
 
-.PHONY: up
-up: isos
+.PHONY: create
+create: isos
 	vm create --name ic-rhel6-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel6-dev-${HOSTNAME}.iso  --detach rhel-6.10
 	vm create --name ic-rhel6-test-${HOSTNAME} --disk ${PWD}/ic-rhel6-test-${HOSTNAME}.iso --detach rhel-6.10
 	vm create --name ic-rhel7-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel7-dev-${HOSTNAME}.iso  --detach rhel-7.7
 	vm create --name ic-rhel7-test-${HOSTNAME} --disk ${PWD}/ic-rhel7-test-${HOSTNAME}.iso --detach rhel-7.7
 	vm create --name ic-rhel8-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel8-dev-${HOSTNAME}.iso  --detach rhel-8.1
 	vm create --name ic-rhel8-test-${HOSTNAME} --disk ${PWD}/ic-rhel8-test-${HOSTNAME}.iso --detach rhel-8.1
+
+.PHONY: up
+up:
+	vm up ic-rhel6-dev-${HOSTNAME}
+	vm up ic-rhel6-test-${HOSTNAME}
+	vm up ic-rhel7-dev-${HOSTNAME}
+	vm up ic-rhel7-test-${HOSTNAME}
+	vm up ic-rhel8-dev-${HOSTNAME}
+	vm up ic-rhel8-test-${HOSTNAME}
 
 .PHONY: down
 down:
@@ -38,9 +47,6 @@ user-data: user-data.in
 
 %.iso: user-data
 	cloud-localds --dsmode local --hostname $* $@ $^
-
-lsyncd.conf:
-	sh ./lsyncd-gen.sh
 
 .PHONY: isos
 isos: $(ISOS)
