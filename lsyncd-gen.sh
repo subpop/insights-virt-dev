@@ -6,7 +6,7 @@ HOSTNAME=$(hostnamectl status --static)
 
 cat <<EOF > lsyncd-$HOSTNAME.conf
 settings {
-	logfile = "./lsyncd-$HOSTNAME.log"
+	logfile = "$(dirname $PWD)/lsyncd-$HOSTNAME.log"
 }
 EOF
 
@@ -20,8 +20,8 @@ for NAME in rhel8 rhel7 rhel6; do
 -- $HOST - $MAC
 sync {
 	default.rsyncssh,
-	source="./",
-	host="$IP",
+	source="$(dirname $PWD)",
+	host="${IP}",
 	targetdir="/root/Projects",
 	exclude = { '*.log' },
 	rsync = {
