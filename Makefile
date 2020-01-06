@@ -31,6 +31,15 @@ up:
 
 .PHONY: down
 down:
+	vm down --force --graceful ic-rhel6-dev-${HOSTNAME}
+	vm down --force --graceful ic-rhel6-test-${HOSTNAME}
+	vm down --force --graceful ic-rhel7-dev-${HOSTNAME}
+	vm down --force --graceful ic-rhel7-test-${HOSTNAME}
+	vm down --force --graceful ic-rhel8-dev-${HOSTNAME}
+	vm down --force --graceful ic-rhel8-test-${HOSTNAME}
+
+.PHONY: destroy
+destroy:
 	vm destroy --force ic-rhel6-dev-${HOSTNAME}
 	vm destroy --force ic-rhel6-test-${HOSTNAME}
 	vm destroy --force ic-rhel7-dev-${HOSTNAME}
