@@ -26,7 +26,8 @@ sync {
 	exclude = { '*.log' },
 	rsync = {
 		archive = true,
-		compress = true
+		compress = true,
+		_extra = {"--no-owner", "--no-group"}
 	},
 	ssh = {
 		options = {["StrictHostKeyChecking"] = "no", ["User"] = "root"},
