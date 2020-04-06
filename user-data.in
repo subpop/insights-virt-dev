@@ -6,6 +6,7 @@ users:
     ssh_authorized_keys:
       - %SSH_KEY%
 rh_subscription:
+  server-hostname: %RHSM_SERVER_URL%
   username: %RHSM_USERNAME%
   password: %RHSM_PASSWORD%
   auto-attach: True

@@ -1,5 +1,6 @@
 SSH_KEY := $(shell cat ${HOME}/.ssh/id_rsa.pub)
 HOSTNAME = $(shell hostnamectl status --static)
+RHSM_SERVER_URL := subscription.rhsm.redhat.com
 
 HOSTNAMES = \
 	ic-rhel6-dev-${HOSTNAME}  \
@@ -51,6 +52,7 @@ user-data: user-data.in
 	sed \
 		-e "s/%RHSM_USERNAME%/${RHSM_USERNAME}/" \
 		-e "s/%RHSM_PASSWORD%/${RHSM_PASSWORD}/" \
+		-e "s/%RHSM_SERVER_URL%/${RHSM_SERVER_URL}/" \
 		-e "s#%SSH_KEY%#${SSH_KEY}#" \
 		< $^ > $@
 

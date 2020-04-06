@@ -26,6 +26,9 @@ register the host with RHSM during cloud-init, specify `RHSM_USERNAME` and
 make RHSM_USERNAME=myuser RHSM_PASSWORD=**********
 ```
 
+You may optionally specify the make variable `RHSM_SERVER_URL` to change the
+registration server hostname.
+
 The cloud-config sets the `root` password to `redhat`, copies `~/.ssh/id_rsa.pub`
 into `root`'s `authorized_keys` file and attempts to register the machine with
 RHSM.
