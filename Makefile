@@ -14,17 +14,17 @@ ISOS = $(addsuffix .iso,$(HOSTNAMES))
 
 .PHONY: create
 create: isos
-	vm create --name ic-rhel6-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel6-dev-${HOSTNAME}.iso  --detach --network virbr0 --video cirrus rhel-6.10
+	vm create --name ic-rhel6-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel6-dev-${HOSTNAME}.iso  --detach --network virbr0 --memory 512MB --video cirrus rhel-6.10
 	sleep 30
-	vm create --name ic-rhel6-test-${HOSTNAME} --disk ${PWD}/ic-rhel6-test-${HOSTNAME}.iso --detach --network virbr0 --video cirrus rhel-6.10
+	vm create --name ic-rhel6-test-${HOSTNAME} --disk ${PWD}/ic-rhel6-test-${HOSTNAME}.iso --detach --network virbr0 --memory 512MB --video cirrus rhel-6.10
 	sleep 30
-	vm create --name ic-rhel7-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel7-dev-${HOSTNAME}.iso  --detach --network virbr0 rhel-7.7
+	vm create --name ic-rhel7-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel7-dev-${HOSTNAME}.iso  --detach --network virbr0 --memory 512MB rhel-7.7
 	sleep 30
-	vm create --name ic-rhel7-test-${HOSTNAME} --disk ${PWD}/ic-rhel7-test-${HOSTNAME}.iso --detach --network virbr0 rhel-7.7
+	vm create --name ic-rhel7-test-${HOSTNAME} --disk ${PWD}/ic-rhel7-test-${HOSTNAME}.iso --detach --network virbr0 --memory 512MB rhel-7.7
 	sleep 30
-	vm create --name ic-rhel8-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel8-dev-${HOSTNAME}.iso  --detach --network virbr0 rhel-8.1
+	vm create --name ic-rhel8-dev-${HOSTNAME}  --disk ${PWD}/ic-rhel8-dev-${HOSTNAME}.iso  --detach --network virbr0 --memory 512MB rhel-8.1
 	sleep 30
-	vm create --name ic-rhel8-test-${HOSTNAME} --disk ${PWD}/ic-rhel8-test-${HOSTNAME}.iso --detach --network virbr0 rhel-8.1
+	vm create --name ic-rhel8-test-${HOSTNAME} --disk ${PWD}/ic-rhel8-test-${HOSTNAME}.iso --detach --network virbr0 --memory 512MB rhel-8.1
 
 .PHONY: up
 up:
